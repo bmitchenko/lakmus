@@ -111,5 +111,5 @@ else {
 }
 ```
 
-## Licence
+## License
 MIT
