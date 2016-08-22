@@ -1,15 +1,8 @@
-# Lakmus
-Fluent validation in TypeScript.
+import { Validator } from "../src/validator";
+import { ValidatorFactory } from "../src/validator-factory";
+import { ValidatorOptions } from "../src/validator-options";
+import ApStyleTitleCasePropertyNameResolver from "../src/resolvers/ap-style-property-name-resolver";
 
-## Features
-  - 20+ built-in validators
-  - Refactoring-friendly (generic property selectors)
-  - Multilanguage
- 
-Inspired by .NET [FluentValidation](https://github.com/JeremySkinner/FluentValidation)
-
-## Demo
-```typescript
 export class Person {
     public id: number;
     public name: string;
@@ -51,6 +44,7 @@ export class PersonValidator extends Validator<Person> {
             .notNull()
             .setCollectionValidator(new PhoneNumberValidator());
 
+        // 
         this.when(x => x.hasDiscount, () => {
             this.ruleFor(x => x.discountValue)
                 .notNull();
@@ -84,7 +78,7 @@ export class PhoneNumberValidator extends Validator<PhoneNumber> {
         this.ruleFor(x => x.number)
             .notNull().maxLenght(7)
             .must((number, phoneNumber) => (phoneNumber.code || "").length + (phoneNumber.country || "").length + (phoneNumber.number || "").length == 11)
-            .withMessage("Please enter a valid phone number.");
+            .withMessage("Длина телефона не должна быть 11 знаков.");
     }
 }
 
@@ -102,14 +96,10 @@ validator = ValidatorFactory.getValidator(PersonValidator);
 // validate;
 var result = validator.validate(person);
 
-// process result;
+// result contains list of errors;
 if (result.isValid) {
     console.log("Is valid.");
 }
 else {
     console.log(result.errors.map(x => x.errorMessage).join("\n"));
 }
-```
-
-## Licence
-MIT
