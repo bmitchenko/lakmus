@@ -1,4 +1,4 @@
-﻿var memberNameExtractor = new RegExp("return (.*);?");
+﻿var memberNameExtractor = new RegExp("return (.*);?\\b");
 
 export function getMemberNameFromSelector<TResult>(name: (x?: TResult) => any) {
     var m = memberNameExtractor.exec(name + "");
