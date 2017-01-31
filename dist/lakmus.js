@@ -5,7 +5,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 define("utils", ["require", "exports"], function (require, exports) {
     "use strict";
-    var memberNameExtractor = new RegExp("return (.*);");
+    var memberNameExtractor = new RegExp("return (.*);?");
     function getMemberNameFromSelector(name) {
         var m = memberNameExtractor.exec(name + "");
         if (m == null)
