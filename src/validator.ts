@@ -62,7 +62,7 @@ export abstract class Validator<T> {
         var rule = new ValidationRule<T, TProperty>(propertyName);
         this._rules.push(rule);
 
-        var configurator = new ValidationRuleConfigurator(rule);
+        var configurator = new ValidationRuleConfigurator<T, TProperty>(rule);
 
         if (this._when != null) {
             configurator.when(this._when);
