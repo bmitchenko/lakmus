@@ -1050,7 +1050,7 @@ define("validation-rule-configurator", ["require", "exports", "validators/proper
          * Validation will fail if the length of the string is more than the specified value.
          * @param maxLength Maximum length.
          */
-        ValidationRuleConfigurator.prototype.maxLenght = function (maxLength) {
+        ValidationRuleConfigurator.prototype.maxLength = function (maxLength) {
             this.setValidator(new max_length_validator_1.MaxLengthValidator(maxLength));
             return this;
         };
@@ -1059,7 +1059,7 @@ define("validation-rule-configurator", ["require", "exports", "validators/proper
          * Validation will fail if the length of the string is less than the specified value.
          * @param maxLength Maximum length.
          */
-        ValidationRuleConfigurator.prototype.minLenght = function (minLength) {
+        ValidationRuleConfigurator.prototype.minLength = function (minLength) {
             this.setValidator(new min_length_validator_1.MinLengthValidator(minLength));
             return this;
         };

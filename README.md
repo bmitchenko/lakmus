@@ -39,7 +39,7 @@ export class PersonValidator extends Validator<Person> {
         // not null & max length;
         this.ruleFor(x => x.name)
             .notNull()
-            .maxLenght(100);
+            .maxLength(100);
 
         // nested objection validation;
         this.ruleFor(x => x.address)
@@ -63,10 +63,10 @@ export class AddressValidator extends Validator<Address> {
         super();
 
         this.ruleFor(x => x.city)
-            .notNull().maxLenght(50);
+            .notNull().maxLength(50);
 
         this.ruleFor(x => x.street)
-            .notNull().maxLenght(50);
+            .notNull().maxLength(50);
     }
 }
 
@@ -75,14 +75,14 @@ export class PhoneNumberValidator extends Validator<PhoneNumber> {
         super();
 
         this.ruleFor(x => x.country)
-            .notNull().maxLenght(3);
+            .notNull().maxLength(3);
 
         this.ruleFor(x => x.code)
-            .notNull().maxLenght(5);
+            .notNull().maxLength(5);
 
         // predicate and custom error message;
         this.ruleFor(x => x.number)
-            .notNull().maxLenght(7)
+            .notNull().maxLength(7)
             .must((number, phoneNumber) => (phoneNumber.code || "").length + (phoneNumber.country || "").length + (phoneNumber.number || "").length == 11)
             .withMessage("Please enter a valid phone number.");
     }

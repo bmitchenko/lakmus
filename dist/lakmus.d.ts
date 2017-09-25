@@ -511,13 +511,13 @@ declare module "validation-rule-configurator" {
          * Validation will fail if the length of the string is more than the specified value.
          * @param maxLength Maximum length.
          */
-        maxLenght(maxLength: number): ValidationRuleConfigurator<TInstance, TProperty>;
+        maxLength(maxLength: number): ValidationRuleConfigurator<TInstance, TProperty>;
         /**
          * Defines a 'minimum length' validator on the current rule.
          * Validation will fail if the length of the string is less than the specified value.
          * @param maxLength Maximum length.
          */
-        minLenght(minLength: number): ValidationRuleConfigurator<TInstance, TProperty>;
+        minLength(minLength: number): ValidationRuleConfigurator<TInstance, TProperty>;
         /**
          * Defines an 'not empty' validator on the current rule.
          * Validation will fail if the property is null, undefined, whitespace, zero or an empty array.

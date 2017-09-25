@@ -15,7 +15,7 @@ class PersonValidator extends Validator<Person> {
 
         this.ruleFor(x => x.name)
             .notNull()
-            .minLenght(10)
+            .minLength(10)
             .withName("Имя");
     }
 }
