@@ -206,7 +206,7 @@ export class ValidationRuleConfigurator<TInstance, TProperty> {
      * Validation will fail if the length of the string is more than the specified value.
      * @param maxLength Maximum length.
      */
-    public maxLenght(maxLength: number): ValidationRuleConfigurator<TInstance, TProperty> {
+    public maxLength(maxLength: number): ValidationRuleConfigurator<TInstance, TProperty> {
         this.setValidator(new MaxLengthValidator(maxLength));
         return this;
     }
@@ -216,7 +216,7 @@ export class ValidationRuleConfigurator<TInstance, TProperty> {
      * Validation will fail if the length of the string is less than the specified value.
      * @param maxLength Maximum length.
      */
-    public minLenght(minLength: number): ValidationRuleConfigurator<TInstance, TProperty> {
+    public minLength(minLength: number): ValidationRuleConfigurator<TInstance, TProperty> {
         this.setValidator(new MinLengthValidator(minLength));
         return this;
     }
