@@ -27,12 +27,12 @@
     "@types/jasmine": "^2.2.32",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-typescript": "^2.13.6",
-    "gulp-uglify": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.2",
+    "gulp-typescript": "^3.2.3",
+    "gulp-uglify": "^3.0.0",
     "jasmine": "^2.4.1",
     "merge2": "^1.0.2",
-    "pump": "^1.0.1",
+    "pump": "^2.0.0",
     "typescript": "^2.6.2"
   },
   "homepage": "https://github.com/bmitchenko/lakmus#readme"

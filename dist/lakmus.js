@@ -1,11 +1,17 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 define("utils", ["require", "exports"], function (require, exports) {
     "use strict";
-    var memberNameExtractor = new RegExp("return (.*);?");
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var memberNameExtractor = new RegExp("return (.*);?\\b");
     function getMemberNameFromSelector(name) {
         var m = memberNameExtractor.exec(name + "");
         if (m == null)
@@ -39,10 +45,11 @@ define("utils", ["require", "exports"], function (require, exports) {
 });
 define("validation-context", ["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * Validation context.
      */
-    var ValidationContext = (function () {
+    var ValidationContext = /** @class */ (function () {
         function ValidationContext() {
         }
         return ValidationContext;
@@ -51,8 +58,9 @@ define("validation-context", ["require", "exports"], function (require, exports)
 });
 define("results/validation-error", ["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /** Represents an error that occurs during validation. */
-    var ValidationError = (function () {
+    var ValidationError = /** @class */ (function () {
         /**
          * Initializes a new instance of the ValidationError class.
          * @param errorMessage Error message.
@@ -68,8 +76,9 @@ define("results/validation-error", ["require", "exports"], function (require, ex
 });
 define("results/validation-result", ["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /** The result of running a validator. */
-    var ValidationResult = (function () {
+    var ValidationResult = /** @class */ (function () {
         function ValidationResult() {
             /** A collection of errors. */
             this.errors = [];
@@ -88,16 +97,19 @@ define("results/validation-result", ["require", "exports"], function (require, e
 });
 define("resolvers/error-message-resolver", ["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
 });
 define("localization/language-resources", ["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
 });
 define("localization/language-manager", ["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * Represents a language manager.
      */
-    var LanguageManager = (function () {
+    var LanguageManager = /** @class */ (function () {
         function LanguageManager() {
         }
         /**
@@ -138,9 +150,11 @@ define("localization/language-manager", ["require", "exports"], function (requir
 });
 define("resolvers/property-name-resolver", ["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
 });
 define("resolvers/pascal-case-property-name-resolver", ["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * PascalCase property name resolver (default).
      * @param name Property name.
@@ -151,15 +165,15 @@ define("resolvers/pascal-case-property-name-resolver", ["require", "exports"], f
         }
         return name;
     };
-    Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = PascalCasePropertyNameResolver;
 });
 define("validator-options", ["require", "exports", "resolvers/pascal-case-property-name-resolver"], function (require, exports, pascal_case_property_name_resolver_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * Validation settings.
      */
-    var ValidatorOptions = (function () {
+    var ValidatorOptions = /** @class */ (function () {
         function ValidatorOptions() {
         }
         /** Validation langugage. Default 'en'. */
@@ -172,6 +186,7 @@ define("validator-options", ["require", "exports", "resolvers/pascal-case-proper
 });
 define("localization/en", ["require", "exports", "localization/language-manager"], function (require, exports, language_manager_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     language_manager_1.LanguageManager.registerLanguage("en", {
         argumentNull: "Value cannot be null. Parameter name: {parameterName}.",
         creditCard: "The {name} field is not a valid credit card number.",
@@ -201,6 +216,7 @@ define("localization/en", ["require", "exports", "localization/language-manager"
 });
 define("localization/ru", ["require", "exports", "localization/language-manager"], function (require, exports, language_manager_2) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     language_manager_2.LanguageManager.registerLanguage("ru", {
         argumentNull: "Значение не может быть неопределенным. Имя параметра: {parameterName}.",
         creditCard: "Поле {name} не содержит допустимый номер кредитной карты.",
@@ -230,10 +246,11 @@ define("localization/ru", ["require", "exports", "localization/language-manager"
 });
 define("validator", ["require", "exports", "utils", "validation-rule", "validation-rule-configurator", "results/validation-result", "localization/language-manager", "validator-options", "localization/en", "localization/ru"], function (require, exports, utils_1, validation_rule_1, validation_rule_configurator_1, validation_result_1, language_manager_3, validator_options_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * Defines a validator for a particular type.
      */
-    var Validator = (function () {
+    var Validator = /** @class */ (function () {
         function Validator() {
             this._rules = [];
         }
@@ -297,7 +314,8 @@ define("validator", ["require", "exports", "utils", "validation-rule", "validati
 });
 define("validators/property-validator", ["require", "exports", "localization/language-manager", "validator-options"], function (require, exports, language_manager_4, validator_options_2) {
     "use strict";
-    var PropertyValidator = (function () {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var PropertyValidator = /** @class */ (function () {
         function PropertyValidator(errorMessage) {
             this.errorMessage = errorMessage;
         }
@@ -330,8 +348,9 @@ define("validators/property-validator", ["require", "exports", "localization/lan
 });
 define("validation-rule", ["require", "exports", "validation-context", "results/validation-error", "localization/language-manager", "validator-options"], function (require, exports, validation_context_1, validation_error_1, language_manager_5, validator_options_3) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /** Defines a rule associated with a property which can have multiple validators. */
-    var ValidationRule = (function () {
+    var ValidationRule = /** @class */ (function () {
         /**
          * Initializes a new instance of the ValidationRule class.
          * @param name Property name.
@@ -437,11 +456,13 @@ define("validation-rule", ["require", "exports", "validation-context", "results/
 });
 define("validators/credit-card.validator", ["require", "exports", "validators/property-validator", "utils"], function (require, exports, property_validator_1, utils_2) {
     "use strict";
-    var CreditCardValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var CreditCardValidator = /** @class */ (function (_super) {
         __extends(CreditCardValidator, _super);
         function CreditCardValidator(errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "creditCard";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "creditCard";
+            return _this;
         }
         CreditCardValidator.prototype.luhnCheck = function (cardNumber) {
             // https://gist.github.com/DiegoSalazar/4075533
@@ -484,11 +505,13 @@ define("validators/credit-card.validator", ["require", "exports", "validators/pr
 });
 define("validators/email.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_2) {
     "use strict";
-    var EmailValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var EmailValidator = /** @class */ (function (_super) {
         __extends(EmailValidator, _super);
         function EmailValidator(errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "email";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "email";
+            return _this;
         }
         EmailValidator.prototype.isValid = function (context) {
             var email = context.propertyValue;
@@ -507,11 +530,13 @@ define("validators/email.validator", ["require", "exports", "validators/property
 });
 define("validators/empty.validator", ["require", "exports", "validators/property-validator", "utils"], function (require, exports, property_validator_3, utils_3) {
     "use strict";
-    var EmptyValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var EmptyValidator = /** @class */ (function (_super) {
         __extends(EmptyValidator, _super);
         function EmptyValidator(errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "empty";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "empty";
+            return _this;
         }
         EmptyValidator.prototype.isValid = function (context) {
             var value = context.propertyValue;
@@ -532,12 +557,14 @@ define("validators/empty.validator", ["require", "exports", "validators/property
 });
 define("validators/equal.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_4) {
     "use strict";
-    var EqualValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var EqualValidator = /** @class */ (function (_super) {
         __extends(EqualValidator, _super);
         function EqualValidator(comparisonValue, errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "equal";
-            this.comparisonValue = comparisonValue;
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "equal";
+            _this.comparisonValue = comparisonValue;
+            return _this;
         }
         EqualValidator.prototype.isValid = function (context) {
             if (this.comparisonValue instanceof Date && context.propertyValue instanceof Date) {
@@ -551,12 +578,14 @@ define("validators/equal.validator", ["require", "exports", "validators/property
 });
 define("validators/exact-length.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_5) {
     "use strict";
-    var ExactLengthValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var ExactLengthValidator = /** @class */ (function (_super) {
         __extends(ExactLengthValidator, _super);
         function ExactLengthValidator(exactLength, errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "exactLength";
-            this.exactLength = exactLength;
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "exactLength";
+            _this.exactLength = exactLength;
+            return _this;
         }
         ExactLengthValidator.prototype.isValid = function (context) {
             var value = context.propertyValue;
@@ -574,14 +603,16 @@ define("validators/exact-length.validator", ["require", "exports", "validators/p
 });
 define("validators/range.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_6) {
     "use strict";
-    var RangeValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var RangeValidator = /** @class */ (function (_super) {
         __extends(RangeValidator, _super);
         function RangeValidator(min, max, inclusive, errorMessage) {
             if (inclusive === void 0) { inclusive = true; }
-            _super.call(this, errorMessage);
-            this.min = min;
-            this.max = max;
-            this.inclusive = inclusive;
+            var _this = _super.call(this, errorMessage) || this;
+            _this.min = min;
+            _this.max = max;
+            _this.inclusive = inclusive;
+            return _this;
         }
         RangeValidator.prototype.isValid = function (context) {
             var value = context.propertyValue;
@@ -623,11 +654,13 @@ define("validators/range.validator", ["require", "exports", "validators/property
 });
 define("validators/exclusive-between.validator", ["require", "exports", "validators/range.validator"], function (require, exports, range_validator_1) {
     "use strict";
-    var ExclusiveBetweenValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var ExclusiveBetweenValidator = /** @class */ (function (_super) {
         __extends(ExclusiveBetweenValidator, _super);
         function ExclusiveBetweenValidator(min, max, errorMessage) {
-            _super.call(this, min, max, false, errorMessage);
-            this.errorMessageResourceName = "exclusiveBetween";
+            var _this = _super.call(this, min, max, false, errorMessage) || this;
+            _this.errorMessageResourceName = "exclusiveBetween";
+            return _this;
         }
         return ExclusiveBetweenValidator;
     }(range_validator_1.RangeValidator));
@@ -635,11 +668,13 @@ define("validators/exclusive-between.validator", ["require", "exports", "validat
 });
 define("validators/greater-than-or-equal.validator", ["require", "exports", "validators/range.validator"], function (require, exports, range_validator_2) {
     "use strict";
-    var GreaterThanOrEqualValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var GreaterThanOrEqualValidator = /** @class */ (function (_super) {
         __extends(GreaterThanOrEqualValidator, _super);
         function GreaterThanOrEqualValidator(min, errorMessage) {
-            _super.call(this, min, null, true, errorMessage);
-            this.errorMessageResourceName = "greaterThanOrEquals";
+            var _this = _super.call(this, min, null, true, errorMessage) || this;
+            _this.errorMessageResourceName = "greaterThanOrEquals";
+            return _this;
         }
         return GreaterThanOrEqualValidator;
     }(range_validator_2.RangeValidator));
@@ -647,11 +682,13 @@ define("validators/greater-than-or-equal.validator", ["require", "exports", "val
 });
 define("validators/greater-than.validator", ["require", "exports", "validators/range.validator"], function (require, exports, range_validator_3) {
     "use strict";
-    var GreaterThanValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var GreaterThanValidator = /** @class */ (function (_super) {
         __extends(GreaterThanValidator, _super);
         function GreaterThanValidator(min, errorMessage) {
-            _super.call(this, min, null, false, errorMessage);
-            this.errorMessageResourceName = "greaterThan";
+            var _this = _super.call(this, min, null, false, errorMessage) || this;
+            _this.errorMessageResourceName = "greaterThan";
+            return _this;
         }
         return GreaterThanValidator;
     }(range_validator_3.RangeValidator));
@@ -659,11 +696,13 @@ define("validators/greater-than.validator", ["require", "exports", "validators/r
 });
 define("validators/inclusive-between.validator", ["require", "exports", "validators/range.validator"], function (require, exports, range_validator_4) {
     "use strict";
-    var InclusiveBetweenValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var InclusiveBetweenValidator = /** @class */ (function (_super) {
         __extends(InclusiveBetweenValidator, _super);
         function InclusiveBetweenValidator(min, max, errorMessage) {
-            _super.call(this, min, max, true, errorMessage);
-            this.errorMessageResourceName = "inclusiveBetween";
+            var _this = _super.call(this, min, max, true, errorMessage) || this;
+            _this.errorMessageResourceName = "inclusiveBetween";
+            return _this;
         }
         return InclusiveBetweenValidator;
     }(range_validator_4.RangeValidator));
@@ -671,11 +710,13 @@ define("validators/inclusive-between.validator", ["require", "exports", "validat
 });
 define("validators/less-than-or-equal.validator", ["require", "exports", "validators/range.validator"], function (require, exports, range_validator_5) {
     "use strict";
-    var LessThanOrEqualValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var LessThanOrEqualValidator = /** @class */ (function (_super) {
         __extends(LessThanOrEqualValidator, _super);
         function LessThanOrEqualValidator(max, errorMessage) {
-            _super.call(this, null, max, true, errorMessage);
-            this.errorMessageResourceName = "lessThanOrEquals";
+            var _this = _super.call(this, null, max, true, errorMessage) || this;
+            _this.errorMessageResourceName = "lessThanOrEquals";
+            return _this;
         }
         return LessThanOrEqualValidator;
     }(range_validator_5.RangeValidator));
@@ -683,11 +724,13 @@ define("validators/less-than-or-equal.validator", ["require", "exports", "valida
 });
 define("validators/less-than.validator", ["require", "exports", "validators/range.validator"], function (require, exports, range_validator_6) {
     "use strict";
-    var LessThanValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var LessThanValidator = /** @class */ (function (_super) {
         __extends(LessThanValidator, _super);
         function LessThanValidator(max, errorMessage) {
-            _super.call(this, null, max, false, errorMessage);
-            this.errorMessageResourceName = "lessThan";
+            var _this = _super.call(this, null, max, false, errorMessage) || this;
+            _this.errorMessageResourceName = "lessThan";
+            return _this;
         }
         return LessThanValidator;
     }(range_validator_6.RangeValidator));
@@ -695,12 +738,14 @@ define("validators/less-than.validator", ["require", "exports", "validators/rang
 });
 define("validators/max-length.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_7) {
     "use strict";
-    var MaxLengthValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var MaxLengthValidator = /** @class */ (function (_super) {
         __extends(MaxLengthValidator, _super);
         function MaxLengthValidator(maxLength, errorMessage) {
-            _super.call(this, errorMessage);
-            this.maxLength = maxLength;
-            this.errorMessageResourceName = "maxLength";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.maxLength = maxLength;
+            _this.errorMessageResourceName = "maxLength";
+            return _this;
         }
         MaxLengthValidator.prototype.isValid = function (context) {
             var value = context.propertyValue;
@@ -718,12 +763,14 @@ define("validators/max-length.validator", ["require", "exports", "validators/pro
 });
 define("validators/min-length.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_8) {
     "use strict";
-    var MinLengthValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var MinLengthValidator = /** @class */ (function (_super) {
         __extends(MinLengthValidator, _super);
         function MinLengthValidator(minLength, errorMessage) {
-            _super.call(this, errorMessage);
-            this.minLength = minLength;
-            this.errorMessageResourceName = "minLength";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.minLength = minLength;
+            _this.errorMessageResourceName = "minLength";
+            return _this;
         }
         MinLengthValidator.prototype.isValid = function (context) {
             var value = context.propertyValue;
@@ -741,11 +788,13 @@ define("validators/min-length.validator", ["require", "exports", "validators/pro
 });
 define("validators/not-empty.validator", ["require", "exports", "validators/property-validator", "utils"], function (require, exports, property_validator_9, utils_4) {
     "use strict";
-    var NotEmptyValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var NotEmptyValidator = /** @class */ (function (_super) {
         __extends(NotEmptyValidator, _super);
         function NotEmptyValidator(errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "notEmpty";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "notEmpty";
+            return _this;
         }
         NotEmptyValidator.prototype.isValid = function (context) {
             var value = context.propertyValue;
@@ -766,12 +815,14 @@ define("validators/not-empty.validator", ["require", "exports", "validators/prop
 });
 define("validators/not-equal.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_10) {
     "use strict";
-    var NotEqualValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var NotEqualValidator = /** @class */ (function (_super) {
         __extends(NotEqualValidator, _super);
         function NotEqualValidator(valueToCompare, errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "notEqual";
-            this.comparisonValue = valueToCompare;
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "notEqual";
+            _this.comparisonValue = valueToCompare;
+            return _this;
         }
         NotEqualValidator.prototype.isValid = function (context) {
             if (this.comparisonValue instanceof Date && context.propertyValue instanceof Date) {
@@ -785,11 +836,13 @@ define("validators/not-equal.validator", ["require", "exports", "validators/prop
 });
 define("validators/not-null.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_11) {
     "use strict";
-    var NotNullValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var NotNullValidator = /** @class */ (function (_super) {
         __extends(NotNullValidator, _super);
         function NotNullValidator(errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "notNull";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "notNull";
+            return _this;
         }
         NotNullValidator.prototype.isValid = function (context) {
             return context.propertyValue !== null && context.propertyValue !== undefined;
@@ -800,11 +853,13 @@ define("validators/not-null.validator", ["require", "exports", "validators/prope
 });
 define("validators/null.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_12) {
     "use strict";
-    var NullValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var NullValidator = /** @class */ (function (_super) {
         __extends(NullValidator, _super);
         function NullValidator(errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "null";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "null";
+            return _this;
         }
         NullValidator.prototype.isValid = function (context) {
             return context.propertyValue === null || context.propertyValue === undefined;
@@ -815,11 +870,13 @@ define("validators/null.validator", ["require", "exports", "validators/property-
 });
 define("validators/phone.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_13) {
     "use strict";
-    var PhoneValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var PhoneValidator = /** @class */ (function (_super) {
         __extends(PhoneValidator, _super);
         function PhoneValidator(errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "phone";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "phone";
+            return _this;
         }
         PhoneValidator.prototype.isValid = function (context) {
             if (context.propertyValue == undefined) {
@@ -834,12 +891,14 @@ define("validators/phone.validator", ["require", "exports", "validators/property
 });
 define("validators/predicate.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_14) {
     "use strict";
-    var PredicateValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var PredicateValidator = /** @class */ (function (_super) {
         __extends(PredicateValidator, _super);
         function PredicateValidator(predicate, errorMessage) {
-            _super.call(this, errorMessage);
-            this.predicate = predicate;
-            this.errorMessageResourceName = "predicate";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.predicate = predicate;
+            _this.errorMessageResourceName = "predicate";
+            return _this;
         }
         PredicateValidator.prototype.isValid = function (context) {
             return this.predicate(context.propertyValue, context.instance);
@@ -850,12 +909,14 @@ define("validators/predicate.validator", ["require", "exports", "validators/prop
 });
 define("validators/regular-expression.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_15) {
     "use strict";
-    var RegularExpressionValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var RegularExpressionValidator = /** @class */ (function (_super) {
         __extends(RegularExpressionValidator, _super);
         function RegularExpressionValidator(expression, errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "regularExpression";
-            this.expression = expression;
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "regularExpression";
+            _this.expression = expression;
+            return _this;
         }
         RegularExpressionValidator.prototype.isValid = function (context) {
             if (context.propertyValue == undefined) {
@@ -872,11 +933,13 @@ define("validators/regular-expression.validator", ["require", "exports", "valida
 });
 define("validators/uri.validator", ["require", "exports", "validators/property-validator"], function (require, exports, property_validator_16) {
     "use strict";
-    var UriValidator = (function (_super) {
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var UriValidator = /** @class */ (function (_super) {
         __extends(UriValidator, _super);
         function UriValidator(errorMessage) {
-            _super.call(this, errorMessage);
-            this.errorMessageResourceName = "uri";
+            var _this = _super.call(this, errorMessage) || this;
+            _this.errorMessageResourceName = "uri";
+            return _this;
         }
         UriValidator.prototype.isValid = function (context) {
             if (context.propertyValue == undefined) {
@@ -891,8 +954,9 @@ define("validators/uri.validator", ["require", "exports", "validators/property-v
 });
 define("validation-rule-configurator", ["require", "exports", "validators/property-validator", "validators/credit-card.validator", "validators/email.validator", "validators/equal.validator", "validators/exact-length.validator", "validators/exclusive-between.validator", "validators/greater-than-or-equal.validator", "validators/greater-than.validator", "validators/inclusive-between.validator", "validators/less-than-or-equal.validator", "validators/less-than.validator", "validators/max-length.validator", "validators/min-length.validator", "validators/not-empty.validator", "validators/not-equal.validator", "validators/not-null.validator", "validators/null.validator", "validators/phone.validator", "validators/predicate.validator", "validators/regular-expression.validator", "validators/uri.validator"], function (require, exports, property_validator_17, credit_card_validator_1, email_validator_1, equal_validator_1, exact_length_validator_1, exclusive_between_validator_1, greater_than_or_equal_validator_1, greater_than_validator_1, inclusive_between_validator_1, less_than_or_equal_validator_1, less_than_validator_1, max_length_validator_1, min_length_validator_1, not_empty_validator_1, not_equal_validator_1, not_null_validator_1, null_validator_1, phone_validator_1, predicate_validator_1, regular_expression_validator_1, uri_validator_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /** Helper class that can be used to configure a validation rule. */
-    var ValidationRuleConfigurator = (function () {
+    var ValidationRuleConfigurator = /** @class */ (function () {
         /**
          * Initializes a new instance of the ValidationRuleConfigurator class.
          * @param rule Rule to be configured.
@@ -1127,10 +1191,11 @@ define("validation-rule-configurator", ["require", "exports", "validators/proper
 });
 define("validator-factory", ["require", "exports", "utils", "localization/language-manager", "validator-options"], function (require, exports, utils_5, language_manager_6, validator_options_4) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * Factory for creating validators.
      * */
-    var ValidatorFactory = (function () {
+    var ValidatorFactory = /** @class */ (function () {
         function ValidatorFactory() {
         }
         /**
