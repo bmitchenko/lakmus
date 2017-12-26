@@ -31,9 +31,21 @@ node_modules
 jspm_packages
 typings
 
+# Generated files
+dist/
+demo/**/*.js
+demo/**/*.d.ts
+src/**/*.js
+src/**/*.map
+src/**/*.js.map
+src/**/*.d.ts
+index.d.ts
+index.js
+
 # Optional npm cache directory
 .npm
-# package lock
+
+# npm package lock
 package-lock.json
 
 # Optional REPL history
