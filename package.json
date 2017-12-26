@@ -4,6 +4,7 @@
   "description": "Fluent validation.",
   "main": "index.js",
   "scripts": {
+    "build": "gulp build",
     "test": "jasmine"
   },
   "repository": {
