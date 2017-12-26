@@ -4,8 +4,9 @@
   "description": "Fluent validation.",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build",
-    "test": "jasmine"
+    "clean": "find src/ -type f -name \"{.js,.d.ts}\" -delete",
+    "test": "jasmine",
+    "build": "tsc -p ."
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,11 @@
     "Fluent",
     "Validation",
     "Lakmus"
+  ],
+  "files": [
+    "index.d.ts",
+    "src/**/*.js",
+    "src/**/*.d.ts"
   ],
   "author": "Boris Mitchenko",
   "license": "MIT",
