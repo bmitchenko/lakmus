@@ -23,6 +23,7 @@
     "url": "https://github.com/bmitchenko/lakmus/issues"
   },
   "devDependencies": {
+    "@types/jasmine": "^2.2.32",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
@@ -31,7 +32,7 @@
     "jasmine": "^2.4.1",
     "merge2": "^1.0.2",
     "pump": "^1.0.1",
-    "@types/jasmine": "^2.2.32"
+    "typescript": "^2.6.2"
   },
   "homepage": "https://github.com/bmitchenko/lakmus#readme"
 }
