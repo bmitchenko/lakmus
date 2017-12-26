@@ -50,3 +50,4 @@ index.js
 
 # Visual Studio Code
 .vscode
+*.map
