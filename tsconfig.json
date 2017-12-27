@@ -7,10 +7,10 @@
     },
     "include": [
         "./index.ts",
-        "./src/**/*"
+        "./src/**/*",
+        "./spec/**/*"
     ],
     "exclude": [
-        "node_modules",
-        "spec"
+        "node_modules"
     ]
 }
