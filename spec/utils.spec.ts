@@ -11,7 +11,11 @@ var funcs = [
     function(instance){return instance.InstanceId},
     function(instance){return (instance.InstanceId);},
     function(instance){return (instance.InstanceId);;},
-]   
+    // Simulates es6 arrow functions
+    "instance => instance.InstanceId" as any,
+    "instance =>instance.InstanceId" as any,
+    "(instance) => instance.InstanceId" as any
+]
 
 describe(description, () => {
     it("getMemberNameFromSelector should pass.", () => {
