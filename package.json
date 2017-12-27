@@ -41,6 +41,7 @@
     "gulp-typescript": "^3.2.3",
     "gulp-uglify": "^3.0.0",
     "jasmine": "^2.4.1",
+    "jasmine-spec-reporter": "^4.2.1",
     "merge2": "^1.0.2",
     "pump": "^2.0.0",
     "typescript": "^2.6.2"
