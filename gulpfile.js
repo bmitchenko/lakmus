@@ -32,8 +32,8 @@ gulp.task('compileAndWatch', ['compile'], function() {
     gulp.watch('./**/*.ts', ['compile']);
 });
 
-gulp.task('compileBundle', function() {
     var tsResult = gulp.src('src/*.ts') 
+gulp.task('compileBundle', ["clean"], function () {
         .pipe(ts({
             declaration: true,
             module: "amd",
@@ -47,7 +47,7 @@ gulp.task('compileBundle', function() {
     ]);
 });
 
-gulp.task('build', ["clean", "compileBundle"], function (cb) {
+gulp.task('build', ["compileBundle"], function (cb) {
     pump([
         gulp.src('./dist/lakmus.js'),
         rename({ suffix: '.min' }),
