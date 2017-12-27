@@ -4,9 +4,11 @@
   "description": "Fluent validation.",
   "main": "index.js",
   "scripts": {
-    "clean": "find src/ -type f -name \"{.js,.d.ts}\" -delete",
+    "clean": "gulp clean",
+    "tsc": "tsc -p .",
+    "pretest": "npm run tsc",
     "test": "jasmine",
-    "build": "tsc -p ."
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
