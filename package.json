@@ -11,7 +11,7 @@
     "build": "gulp build",
     "predeploy": "npm run test",
     "deploy": "npm version minor && npm publish",
-    "postversion": "git push && git push --tags",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
