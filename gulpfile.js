@@ -1,3 +1,4 @@
+var del = require('del');
 var gulp = require('gulp');
 var rename = require('gulp-rename');
 var ts = require('gulp-typescript');
@@ -8,6 +9,15 @@ var sourcemaps = require('gulp-sourcemaps');
 var path = require('path');
 
 var tsProject = ts.createProject('tsconfig.json');
+
+gulp.task('clean', function () {
+    return del([
+        'dist/',
+        'index.js', 'index.js.map', 'index.d.ts',
+        'src/**/*.js', 'src/**/*.js.map', 'src/**/*.d.ts',
+        'spec/**/*.js', 'spec/**/*.js.map', 'spec/**/*.d.ts'
+    ]);
+});
 
 gulp.task('compile', function () {
   var tsResult = tsProject
@@ -22,8 +32,8 @@ gulp.task('compileAndWatch', ['compile'], function() {
     gulp.watch('./**/*.ts', ['compile']);
 });
 
-gulp.task('compileBundle', function() {
     var tsResult = gulp.src('src/*.ts') 
+gulp.task('compileBundle', ["clean"], function () {
         .pipe(ts({
             declaration: true,
             module: "amd",
@@ -38,7 +48,7 @@ gulp.task('compileBundle', function() {
 });
 
 gulp.task('build', ["compileBundle"], function (cb) {
-  pump([
+    pump([
         gulp.src('./dist/lakmus.js'),
         rename({ suffix: '.min' }),
         uglify(),
