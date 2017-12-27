@@ -39,8 +39,13 @@ src/**/*.js
 src/**/*.map
 src/**/*.js.map
 src/**/*.d.ts
+spec/**/*.js
+spec/**/*.map
+spec/**/*.js.map
+spec/**/*.d.ts
 index.d.ts
 index.js
+index.js.map
 
 # Optional npm cache directory
 .npm
@@ -50,4 +55,3 @@ index.js
 
 # Visual Studio Code
 .vscode
-*.map
