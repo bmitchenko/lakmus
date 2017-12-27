@@ -8,7 +8,10 @@
     "tsc": "tsc -p .",
     "pretest": "npm run tsc",
     "test": "jasmine",
-    "build": "gulp build"
+    "build": "gulp build",
+    "predeploy": "npm run test",
+    "deploy": "npm version minor && npm publish",
+    "postversion": "git push && git push --tags",
   },
   "repository": {
     "type": "git",
