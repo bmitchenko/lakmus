@@ -2,8 +2,14 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "inlineSourceMap": true
+        "inlineSourceMap": true,
+        "declaration": true
     },
+    "include": [
+        "./index.ts",
+        "./src/**/*",
+        "./spec/**/*"
+    ],
     "exclude": [
         "node_modules"
     ]

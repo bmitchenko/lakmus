@@ -1,10 +1,17 @@
 {
   "name": "lakmus",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Fluent validation.",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "clean": "gulp clean",
+    "tsc": "tsc -p .",
+    "pretest": "npm run tsc",
+    "test": "jasmine",
+    "build": "gulp build",
+    "predeploy": "npm run test",
+    "deploy": "npm version minor && npm publish",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -17,21 +24,30 @@
     "Validation",
     "Lakmus"
   ],
+  "files": [
+    "index.d.ts",
+    "index.js",
+    "src/**/*.js",
+    "src/**/*.d.ts"
+  ],
   "author": "Boris Mitchenko",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bmitchenko/lakmus/issues"
   },
   "devDependencies": {
+    "@types/jasmine": "^2.2.32",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-typescript": "^2.13.6",
-    "gulp-uglify": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.2",
+    "gulp-typescript": "^3.2.3",
+    "gulp-uglify": "^3.0.0",
     "jasmine": "^2.4.1",
+    "jasmine-spec-reporter": "^4.2.1",
     "merge2": "^1.0.2",
-    "pump": "^1.0.1",
-    "@types/jasmine": "^2.2.32"
+    "pump": "^2.0.0",
+    "typescript": "^2.6.2"
   },
   "homepage": "https://github.com/bmitchenko/lakmus#readme"
 }

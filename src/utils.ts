@@ -1,7 +1,8 @@
 ﻿var memberNameExtractor = new RegExp("return (.*);?\\b");
+var memberNameExtractorArrowFunctions = new RegExp("=>(.*)");
 
 export function getMemberNameFromSelector<TResult>(name: (x?: TResult) => any) {
-    var m = memberNameExtractor.exec(name + "");
+    var m = memberNameExtractor.exec(name + "") || memberNameExtractorArrowFunctions.exec(name + "");
     if (m == null) throw new Error("The function does not contain a statement matching 'return variableName;'");
     var parts = m[1].toString().split(".");
     return parts[parts.length - 1];
@@ -25,6 +26,6 @@ export function countDigits(text: string): number {
     if (text) {
         return text.replace(/\D/g, "").length;
     }
-    
+
     return 0;
 }
