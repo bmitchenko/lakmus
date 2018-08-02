@@ -10,7 +10,7 @@ export function getMemberNameFromSelector<TResult>(name: (x?: TResult) => any) {
 
 export function getTypeName(instance: any) {
     var funcNameRegex = /function (.{1,})\(/;
-    var results = (funcNameRegex).exec((instance).constructor.toString());
+    var results = (funcNameRegex).exec((instance).prototype.constructor.toString());
     return (results && results.length > 1) ? results[1] : "";
 };
 
